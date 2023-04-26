@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">CA_Test</string>
+    <string name="credit_agricole">Crédit Agricole</string>
+    <string name="other_bank">Autres Banques</string>
+    <string name="bank_screen_title">Mes comptes</string>
+</resources>
