@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowRight
@@ -67,13 +66,22 @@ fun BankSumInfo(bank: BankEntity, isDeployed: Boolean, onRowPressed: () -> Unit)
         Text(
             text = bank.name,
             fontSize = dimensionResource(id = R.dimen.font_size_h2).value.sp,
-            color = colorResource(id = R.color.default_text_color)
+            color = colorResource(id = R.color.bank_name_color)
         )
         Spacer(Modifier.weight(1f))
+        val balanceSum = bank.accounts.map { it.balance }.sum();
+        val balanceColor =
+            if (balanceSum > 0) {
+                colorResource(id = R.color.bank_balance_positive_color)
+            } else {
+                colorResource(
+                    id = R.color.bank_balance_negative_color
+                )
+            }
         Text(
-            text = "${bank.accounts.map { it.balance }.sum()} €",
+            text = "$balanceSum €",
             fontSize = dimensionResource(id = R.dimen.font_size_h2).value.sp,
-            color = colorResource(id = R.color.light_grey)
+            color = balanceColor
         )
         Box(
             contentAlignment = Alignment.Center,
@@ -84,7 +92,7 @@ fun BankSumInfo(bank: BankEntity, isDeployed: Boolean, onRowPressed: () -> Unit)
                 Icon(
                     imageVector = Icons.Filled.KeyboardArrowUp,
                     contentDescription = "collapse",
-                    tint = colorResource(id = R.color.light_grey),
+                    tint = balanceColor,
                     modifier = Modifier.padding(16.dp, 0.dp)
 
                 )
@@ -92,7 +100,7 @@ fun BankSumInfo(bank: BankEntity, isDeployed: Boolean, onRowPressed: () -> Unit)
                 Icon(
                     imageVector = Icons.Filled.KeyboardArrowDown,
                     contentDescription = "expand",
-                    tint = colorResource(id = R.color.light_grey),
+                    tint = balanceColor,
                     modifier = Modifier.padding(16.dp, 0.dp)
                 )
             }
@@ -118,13 +126,21 @@ fun AccountRow(
         Text(
             text = account.label,
             fontSize = dimensionResource(id = R.dimen.font_size_default).value.sp,
-            color = colorResource(id = R.color.default_text_color)
+            color = colorResource(id = R.color.bank_name_color)
         )
         Spacer(Modifier.weight(1f))
+        val balanceColor =
+            if (account.balance > 0) {
+                colorResource(id = R.color.bank_balance_positive_color)
+            } else {
+                colorResource(
+                    id = R.color.bank_balance_negative_color
+                )
+            }
         Text(
             text = "${account.balance} €",
             fontSize = dimensionResource(id = R.dimen.font_size_default).value.sp,
-            color = colorResource(id = R.color.light_grey)
+            color = balanceColor
         )
         Box(
             contentAlignment = Alignment.Center,
@@ -135,7 +151,7 @@ fun AccountRow(
             Icon(
                 imageVector = Icons.Filled.KeyboardArrowRight,
                 contentDescription = "expand",
-                tint = colorResource(id = R.color.light_grey),
+                tint = balanceColor,
             )
         }
     }

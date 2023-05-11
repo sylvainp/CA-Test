@@ -101,6 +101,14 @@ fun TopBar(navController: NavHostController) {
 @Composable
 fun AccountData(accountInfo: BankAccountEntity) {
     Column() {
+        val balanceColor =
+            if (accountInfo.balance > 0) {
+                colorResource(id = R.color.bank_balance_positive_color)
+            } else {
+                colorResource(
+                    id = R.color.bank_balance_negative_color
+                )
+            }
         Text(
             modifier = Modifier
                 .fillMaxWidth()
@@ -109,7 +117,7 @@ fun AccountData(accountInfo: BankAccountEntity) {
             text = "${accountInfo.balance} €",
             fontSize = dimensionResource(id = R.dimen.font_size_h1).value.sp,
             fontWeight = FontWeight.Bold,
-            color = Color.Black
+            color = balanceColor
         )
         Text(
             modifier = Modifier
@@ -118,7 +126,7 @@ fun AccountData(accountInfo: BankAccountEntity) {
             text = accountInfo.label,
             textAlign = TextAlign.Center,
             fontSize = dimensionResource(id = R.dimen.font_size_h2).value.sp,
-            color = colorResource(id = R.color.default_text_color)
+            color = colorResource(id = R.color.bank_name_color)
         )
         val sortedOperation: List<BankOperationEntity> = accountInfo.sortedOperation();
         LazyColumn(verticalArrangement = Arrangement.spacedBy(1.dp),

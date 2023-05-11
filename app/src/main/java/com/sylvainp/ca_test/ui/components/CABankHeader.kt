@@ -9,6 +9,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
@@ -29,14 +31,21 @@ fun CABankHeader(isCa: Boolean) {
             .height(80.dp)
             .fillMaxWidth()
             .padding(0.dp, 16.dp)
-            .background(color = colorResource(id = R.color.light_grey))
+            .background(
+                brush = Brush.horizontalGradient(
+                    colors = listOf(
+                        colorResource(id = R.color.bank_header_start_color),
+                        colorResource(id = R.color.bank_header_end_color)
+                    )
+                )
+            )
     ) {
         Text(
             modifier = Modifier
                 .padding(8.dp, 0.dp)
                 .align(Alignment.CenterStart),
             text = text,
-            color = colorResource(id = R.color.grey),
+            color = colorResource(id = R.color.white),
             fontSize = dimensionResource(id = R.dimen.font_size_h2).value.sp
         );
     }

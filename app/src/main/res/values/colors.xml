@@ -7,9 +7,14 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="default_text_color">#252323</color>
-    <color name="grey">#505353</color>
-    <color name="light_grey">#C5C4C4</color>
-    <color name="topbar_back_color">#3575F6</color>
+    <color name="title_color">#123158</color>
+    <color name="bank_header_start_color">#03ADE6</color>
+    <color name="bank_header_end_color">#1FC7EE</color>
+    <color name="bank_name_color">#003881</color>
+    <color name="bank_balance_positive_color">#36D96F</color>
+    <color name="bank_balance_negative_color">#D9363B</color>
+    <color name="default_text_color">#002B7C</color>
+    <color name="operation_color">#001B41</color>
+    <color name="topbar_back_color">#123158</color>
     <color name="error">#F44336</color>
 </resources>

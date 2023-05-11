@@ -58,7 +58,7 @@ fun CABankOperationRow(operation: BankOperationEntity) {
             Text(
                 text = "${operation.amount} €",
                 fontSize = dimensionResource(id = R.dimen.font_size_default).value.sp,
-                color = colorResource(id = R.color.light_grey)
+                color = colorResource(id = R.color.operation_color)
             )
         }
 
